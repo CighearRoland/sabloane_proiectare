@@ -10,8 +10,17 @@ public class Paragraph implements Element {
         return this.text;
     }
 
+    public AlignStrategy getTextAlignment() {
+        return this.textAlignment;
+    }
+
     public void setAlignStrategy(AlignStrategy strategy) {
         this.textAlignment = strategy;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
@@ -23,11 +32,8 @@ public class Paragraph implements Element {
         }
     }
 
-    // Metode din interfata Element care nu sunt folosite specific aici
     @Override
-    public void add(Element element) {
-        // Un paragraf nu poate contine alte elemente in aceasta implementare
-    }
+    public void add(Element element) {}
 
     @Override
     public void remove(Element element) {}
