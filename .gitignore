@@ -28,3 +28,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Gradle & Build ###
+.gradle/
+build/
+*.class
+
+### IntelliJ IDEA Local Settings ###
+.idea/
+*.iml
