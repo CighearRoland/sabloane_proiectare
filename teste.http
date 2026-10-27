@@ -1,0 +1,6 @@
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "Design Patterns cu Spring Boot"
+}

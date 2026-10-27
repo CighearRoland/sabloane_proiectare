@@ -1,8 +1,15 @@
 package ro.uvt.models;
 
-public class Paragraph implements Element {
+import jakarta.persistence.*;
+
+@Entity
+public class Paragraph extends BaseElement {
     private String text;
+
+    @Transient
     private AlignStrategy textAlignment;
+
+    public Paragraph() {}
 
     public Paragraph(String text) {
         this.text = text;

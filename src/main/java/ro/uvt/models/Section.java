@@ -1,11 +1,17 @@
 package ro.uvt.models;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section implements Element {
+@Entity
+public class Section extends BaseElement {
     private String title;
+
+    @OneToMany(targetEntity = BaseElement.class, cascade = CascadeType.ALL)
     private List<Element> children = new ArrayList<>();
+
+    public Section() {} // Obligatoriu pentru JPA
 
     public Section(String title) {
         this.title = title;

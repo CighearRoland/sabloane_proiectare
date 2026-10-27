@@ -1,9 +1,13 @@
 package ro.uvt.models;
 
+import jakarta.persistence.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element {
+@Entity
+public class Image extends BaseElement {
     private String imageName;
+
+    public Image() {}
 
     public Image(String name) {
         this.imageName = name;
@@ -16,14 +20,15 @@ public class Image implements Element {
 
     @Override
     public void print() {
-        System.out.println("main.java.ro.uvt.models.Image with name: " + imageName);
+        System.out.println("ro.uvt.models.Image with name: " + imageName);
     }
 
-    // Metodele din main.java.ro.uvt.models.Element
     @Override
     public void add(Element element) {}
+
     @Override
     public void remove(Element element) {}
+
     @Override
     public Element get(int index) { return null; }
 

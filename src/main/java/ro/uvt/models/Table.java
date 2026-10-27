@@ -1,7 +1,12 @@
 package ro.uvt.models;
 
-public class Table implements Element {
+import jakarta.persistence.Entity;
+
+@Entity
+public class Table extends BaseElement {
     private String title;
+
+    public Table() {} // Obligatoriu pentru JPA
 
     public Table(String title) {
         this.title = title;
@@ -9,15 +14,17 @@ public class Table implements Element {
 
     @Override
     public void accept(Visitor visitor) {
-        visitor.visit(this); // Accepta vizitatorul
+        visitor.visit(this);
     }
 
     @Override
     public void print() {
-        System.out.println("main.java.ro.uvt.models.Table: " + title);
+        System.out.println("ro.uvt.models.Table: " + title);
     }
 
-    public String getTitle() { return this.title; }
+    public String getTitle() {
+        return this.title;
+    }
 
     @Override public void add(Element element) {}
     @Override public void remove(Element element) {}
