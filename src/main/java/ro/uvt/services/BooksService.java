@@ -9,7 +9,6 @@ import java.util.Collection;
 public class BooksService {
     private final CrudRepository<Book, Integer> crudRepository;
 
-    // Injectăm interfața generică, iar Spring va furniza automat instanța BooksRepositoryAdapter
     public BooksService(CrudRepository<Book, Integer> crudRepository) {
         this.crudRepository = crudRepository;
     }
@@ -20,5 +19,18 @@ public class BooksService {
 
     public Book addBook(Book book) {
         return crudRepository.save(book);
+    }
+
+    public Book getBookById(Integer id) {
+        return crudRepository.findById(id);
+    }
+
+    public Book updateBook(Integer id, Book updatedBook) {
+        updatedBook.setId(id); // Setăm ID-ul pentru ca JPA să facă UPDATE, nu INSERT
+        return crudRepository.save(updatedBook);
+    }
+
+    public void deleteBook(Integer id) {
+        crudRepository.deleteById(id);
     }
 }

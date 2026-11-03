@@ -21,4 +21,14 @@ public class BooksRepositoryAdapter implements CrudRepository<Book, Integer> {
     public Collection<Book> findAll() {
         return booksRepository.findAll();
     }
+
+    @Override
+    public Book findById(Integer id) {
+        return booksRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        booksRepository.deleteById(id);
+    }
 }

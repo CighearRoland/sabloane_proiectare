@@ -1,6 +1,40 @@
+### 1. Creare prima carte (cu un singur autor)
 POST http://localhost:8080/books
 Content-Type: application/json
 
 {
-  "title": "Design Patterns cu Spring Boot"
+  "title": "Clean Code",
+  "authors": [
+    {
+      "name": "Robert C. Martin"
+    }
+  ]
 }
+
+### 2. Creare a doua carte (cu mai mulți autori)
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+  "authors": [
+    {
+      "name": "Erich Gamma"
+    },
+    {
+      "name": "Richard Helm"
+    },
+    {
+      "name": "Ralph Johnson"
+    }
+  ]
+}
+
+### 3. Vizualizare toate carțile (vei vedea ca includ și autorii)
+GET http://localhost:8080/books
+
+### 4. Vizualizare toți autorii (endpoint-ul nou)
+GET http://localhost:8080/authors
+
+### 5. Ștergere carte
+DELETE http://localhost:8080/books/6

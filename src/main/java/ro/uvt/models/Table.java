@@ -1,8 +1,10 @@
 package ro.uvt.models;
 
 import jakarta.persistence.Entity;
+// Am eliminat importul pentru Table
 
 @Entity
+@jakarta.persistence.Table(name = "Book_Table") // Folosim numele complet aici
 public class Table extends BaseElement {
     private String title;
 
