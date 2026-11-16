@@ -4,15 +4,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.models.Book;
 import ro.uvt.services.BooksService;
+import ro.uvt.observer.AllBooksSubject;
 import java.util.Collection;
 
 @RestController
 @RequestMapping("/books")
 public class BooksController {
-    private final BooksService booksService;
 
-    public BooksController(BooksService booksService) {
+    private final BooksService booksService;
+    private final AllBooksSubject allBooksSubject;
+
+    public BooksController(BooksService booksService, AllBooksSubject allBooksSubject) {
         this.booksService = booksService;
+        this.allBooksSubject = allBooksSubject;
     }
 
     @GetMapping
@@ -22,7 +26,9 @@ public class BooksController {
 
     @PostMapping
     public Book addBook(@RequestBody Book book) {
-        return booksService.addBook(book);
+        Book savedBook = booksService.addBook(book); // Salvează cartea în DB
+        allBooksSubject.add(savedBook); // Notifică clienții conectați prin SSE
+        return savedBook;
     }
 
     @GetMapping("/{id}")

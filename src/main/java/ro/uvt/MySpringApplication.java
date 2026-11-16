@@ -3,6 +3,10 @@ package ro.uvt;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean; // Import nou
+import org.springframework.web.servlet.config.annotation.CorsRegistry; // Import nou
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer; // Import nou
+
 import ro.uvt.difexamples.ClientComponent;
 import ro.uvt.difexamples.SingletonComponent;
 import ro.uvt.difexamples.TransientComponent;
@@ -26,5 +30,15 @@ public class MySpringApplication {
         c.operation();
         c = (ClientComponent) context.getBean("clientComponent");
         c.operation();
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**");
+            }
+        };
     }
 }
