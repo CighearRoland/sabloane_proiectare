@@ -1,4 +1,8 @@
-<html lang="en">
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Cărți</title>
+</head>
 <body>
 <h1>All Books</h1>
 <a href="javascript:void(0)" onclick="sendRequest()">Fetch Books</a>
@@ -12,7 +16,7 @@
                 document.getElementById("sseDiv").innerHTML += "Cartea salvată: ID " + data.id + " - " + data.title + "<br>";
             };
         } else {
-            document.getElementById("sseDiv").innerHTML = "Your browser does not support server-sent events.";
+            document.getElementById("sseDiv").innerHTML = "Browserul tău nu suportă server-sent events.";
         }
     }
 </script>
